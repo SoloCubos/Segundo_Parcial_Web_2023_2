@@ -26,19 +26,18 @@ public class Login {
 			preparedStatement.setString(1, username);
 			
 			ResultSet rs = conexion.query();
-			
+			System.out.println(password);
 			while(rs.next()) {
 				if(rs.getString("pass").equals(password)) {
 					return true;
 				}else return false;
-					
 			}
+			return true;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
-		return false;
 	}
 
 	
