@@ -23,13 +23,13 @@
      <div class="container col-md-5">
          <div class="card">
              <div class="card-body">
-             <form>
+                 <form action="login" method="post">
                  <fieldset class="form-group">
-                     <label>Username</label> <input type="text" value="<c:out value='${user.username}' />" class="form-control" name="nombre" required="required">
+                     <label>Username</label> <input type="text" value="<c:out value='${user.username}' />" class="form-control" name="username" required="required">
                  </fieldset>
 
                  <fieldset class="form-group">
-                     <label>Password</label> <input type="text" value="<c:out value='${user.pass}' />" class="form-control" name="email">
+                     <label>Password</label> <input type="password" value="<c:out value='${user.pass}' />" class="form-control" name="pass">
                  </fieldset>
                  <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
                  </form>

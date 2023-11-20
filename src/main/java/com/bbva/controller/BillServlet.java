@@ -22,6 +22,7 @@ public class BillServlet extends HttpServlet {
 	
 	private Login login;
 	private BillDAO billDAO;
+	boolean userIsLogged;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -93,13 +94,15 @@ public class BillServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String pass = request.getParameter("pass");
 		
-		System.out.println(username + pass);
+		System.out.println(username + " " + pass);
 		
 		if(login.validateLogin(username, pass)){
 			response.sendRedirect("getallbills");
+			userIsLogged = true;
 			
 		}else {
 			response.sendRedirect("");
+			userIsLogged = false;
 		}
 		
 
@@ -126,9 +129,10 @@ public class BillServlet extends HttpServlet {
 		
 	}
 
-	private void getAllBills(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
+	private void getAllBills(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException, SQLException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("billist.jsp");
+		dispatcher.forward(request, response);
 	}
 	
 }

@@ -13,7 +13,7 @@ public class Login {
 	
 	Conexion conexion;
 	
-	private static final String SELECT_USER_BY_username = "SELECT * FROM user WHERE username = ?;";
+	private static final String SELECT_USER_BY_username = "SELECT * FROM users WHERE username = ?;";
 	
 	public Login(){
 
@@ -26,13 +26,12 @@ public class Login {
 			preparedStatement.setString(1, username);
 			
 			ResultSet rs = conexion.query();
-			System.out.println(password);
 			while(rs.next()) {
 				if(rs.getString("pass").equals(password)) {
 					return true;
 				}else return false;
 			}
-			return true;
+			return false;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
